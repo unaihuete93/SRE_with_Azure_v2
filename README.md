@@ -5,4 +5,4 @@ The following repo is used as a demo in the book **The Art of Site Reliability E
 
 # Links found in the books
 
-You can quickly access the links found in the book here 
+You can quickly access the links found in the book [here](links.md)
