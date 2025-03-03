@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "l4VQtUgvvgVjC4xwyq223dXxIm97DZUonrv0vSdG/rc=",
+  "Source": "srewithazure-app",
+  "BasePath": "_content/srewithazure-app",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
