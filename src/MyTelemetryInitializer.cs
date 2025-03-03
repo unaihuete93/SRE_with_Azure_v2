@@ -19,7 +19,7 @@ namespace DotnetDemoapp.Telemetry
       // get App version from assembly info
       var AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
       telemetry.Context.GlobalProperties.Add("AppVersion", AppVersion);
-      telemetry.Context.Cloud.RoleName = "ContainerApp-NET6-Website";
+      telemetry.Context.Cloud.RoleName = "ContainerApp-NET8-Website";
     }
 
   }
