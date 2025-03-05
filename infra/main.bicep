@@ -4,7 +4,7 @@ param containerAppName string = 'srewithazure-aca-app'
 param containerImage string 
 param cpuCores int = 1
 param memorySize string = '1.0Gi'
-param acrName string
+
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -29,8 +29,8 @@ module containerAppModule 'modules/container-app.bicep' = {
     containerImage: containerImage
     cpuCores: cpuCores
     memorySize: memorySize
-logAnalyticsWorkspaceId: logAnalyticsModule.outputs.workspaceId
-appConfigEndpoint: appConfigModule.outputs.appConfigEndpoint
-acrName: acrName
+    logAnalyticsWorkspaceId: logAnalyticsModule.outputs.workspaceId
+    appConfigEndpoint: appConfigModule.outputs.appConfigEndpoint
+
   }
 }

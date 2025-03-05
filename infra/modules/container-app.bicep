@@ -6,7 +6,6 @@ param cpuCores int
 param memorySize string
 param logAnalyticsWorkspaceId string
 param appConfigEndpoint string
-param acrName string
 
 resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environmentName
@@ -59,7 +58,7 @@ env: [
 
 resource acrRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid(containerApp.id, 'acrpull')
-  scope: resourceId('Microsoft.ContainerRegistry/registries', acrName)
+  scope: resourceGroup()
   properties: {
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d') // AcrPull role
     principalId: containerApp.identity.principalId
