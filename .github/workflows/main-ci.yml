@@ -36,7 +36,7 @@ jobs:
       run: |
         az deployment group create \
           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-          --template-file infra/acr.bicep \
+          --template-file infra/modules/acr.bicep \
           --parameters acrName=${{ secrets.ACR_NAME }}
 
     - name: Build and push Docker image
