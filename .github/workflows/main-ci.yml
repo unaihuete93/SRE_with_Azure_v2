@@ -28,6 +28,10 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         
+    - name: Create resource group if it does not exist
+      run: |
+        az group create --name ${{ secrets.AZURE_RESOURCE_GROUP }} --location eastus
+
     - name: Create Azure Container Registry
       run: |
         az deployment group create \
