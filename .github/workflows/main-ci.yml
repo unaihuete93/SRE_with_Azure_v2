@@ -42,5 +42,5 @@ jobs:
     - name: Build and push Docker image
       run: |
         az acr login --name ${{ secrets.ACR_NAME }}
-        docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/net8-app:latest -f src/Dockerfile src
-        docker push ${{ secrets.ACR_NAME }}.azurecr.io/net8-app:latest
+        docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.run_number }} -f src/Dockerfile src
+        docker push ${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.run_number }}
