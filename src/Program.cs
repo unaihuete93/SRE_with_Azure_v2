@@ -23,7 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 //                         })
 //                         .UseFeatureFlags());
 
-var endpoint="https://srewithazure-appconfig.azconfig.io";                     
+var endpoint = Environment.GetEnvironmentVariable("APP_CONFIG_END");
 builder.Configuration.AddAzureAppConfiguration(options =>
                     options.Connect(new Uri(endpoint), new ManagedIdentityCredential())
                         .ConfigureKeyVault(kv =>
