@@ -7,6 +7,7 @@ param memorySize string = '2.0Gi'
 param appInsightsName string = 'srewithazurev2-app-insights'
 param keyVaultName string = 'srewithazurev2-keyvault'
 param userMiName string = 'myUserAssignedIdentity'
+param acrName string = 'myAcrRegistry'
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -60,5 +61,6 @@ module containerAppModule 'modules/container-app.bicep' = {
     logAnalyticsWorkspaceGuid: logAnalyticsModule.outputs.workspaceGuid
     appConfigEndpoint: appConfigModule.outputs.appConfigEndpoint
     userMiId: userMi.outputs.resourceId
+    acrName: acrName
   }
 }

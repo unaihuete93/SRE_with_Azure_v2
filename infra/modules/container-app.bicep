@@ -8,6 +8,7 @@ param logAnalyticsWorkspaceId string
 param appConfigEndpoint string
 param logAnalyticsWorkspaceGuid string
 param userMiId string
+param acrName string
 
 resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environmentName
@@ -39,6 +40,12 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
         external: true
         targetPort: 5000
       }
+      registries: [
+        {
+          server: '${acrName}.azurecr.io'
+          identity: userMiId
+        }
+      ]
     }
     template: {
       containers: [
