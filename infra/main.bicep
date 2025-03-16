@@ -6,6 +6,7 @@ param cpuCores int = 1
 param memorySize string = '2.0Gi'
 param appInsightsName string = 'srewithazurev2-app-insights'
 param keyVaultName string = 'srewithazurev2-keyvault'
+param userMiName string = 'myUserAssignedIdentity'
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -38,6 +39,14 @@ module keyVaultModule 'modules/key-vault.bicep' = {
   }
 }
 
+module userMi 'modules/user-mi.bicep' = {
+  name: userMiName
+  params: {
+    name: userMiName
+    location: location
+  }
+}
+
 module containerAppModule 'modules/container-app.bicep' = {
   name: 'containerAppDeployment'
   params: {
@@ -50,5 +59,6 @@ module containerAppModule 'modules/container-app.bicep' = {
     logAnalyticsWorkspaceId: logAnalyticsModule.outputs.workspaceId
     logAnalyticsWorkspaceGuid: logAnalyticsModule.outputs.workspaceGuid
     appConfigEndpoint: appConfigModule.outputs.appConfigEndpoint
+    userMiId: userMi.outputs.resourceId
   }
 }
