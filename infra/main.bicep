@@ -8,6 +8,8 @@ param appInsightsName string = 'srewithazurev2-app-insights'
 param keyVaultName string = 'srewithazurev2-keyvault'
 param userMiName string = 'myUserAssignedIdentity'
 param acrName string = 'myAcrRegistry'
+@secure()
+param weatherApiKey string
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -37,6 +39,7 @@ module keyVaultModule 'modules/key-vault.bicep' = {
   params: {
     keyVaultName: keyVaultName
     location: location
+    weatherApiKey: weatherApiKey
   }
 }
 
