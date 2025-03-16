@@ -15,6 +15,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
       destination: 'log-analytics'
       logAnalyticsConfiguration: {
         customerId: logAnalyticsWorkspaceId
+        sharedKey: listKeys(logAnalyticsWorkspaceId, '2015-11-01').primarySharedKey
       }
     }
   }
@@ -55,7 +56,7 @@ env: [
   }
 }
 
-
+// Microsoft.Authorization/roleAssignments/write need for the SP used on the GitHub Actions
 resource acrRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid(containerApp.id, 'acrpull')
   scope: resourceGroup()
