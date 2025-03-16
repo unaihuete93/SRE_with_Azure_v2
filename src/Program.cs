@@ -8,31 +8,50 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.FeatureManagement;
 using Microsoft.FeatureManagement.FeatureFilters;
 //app insights
- using Microsoft.ApplicationInsights.Extensibility;
- 
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var endpoint = Environment.GetEnvironmentVariable("APP_CONFIG_END");
-builder.Configuration.AddAzureAppConfiguration(options =>
-                    options.Connect(new Uri(endpoint), new ManagedIdentityCredential())
-                        .ConfigureKeyVault(kv =>
-                        {
-                            kv.SetCredential(new ManagedIdentityCredential());
-                        })
-                        .ConfigureRefresh(refresh =>
-                        {
-                            refresh.Register("Refresh:Config", refreshAll: true)
-                                   .SetCacheExpiration(new TimeSpan(0,0,10)); //10 seconds expiration
-                        })
-                        .UseFeatureFlags());
+// Configure logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
+var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+var logger = loggerFactory.CreateLogger<Program>();
+
+var endpoint = Environment.GetEnvironmentVariable("APP_CONFIG_END");
+if (string.IsNullOrEmpty(endpoint))
+{
+    logger.LogError("APP_CONFIG_END environment variable is not set.");
+    throw new InvalidOperationException("APP_CONFIG_END environment variable is not set.");
+}
+
+try
+{
+    builder.Configuration.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(endpoint), new ManagedIdentityCredential())
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new ManagedIdentityCredential());
+                            })
+                            .ConfigureRefresh(refresh =>
+                            {
+                                refresh.Register("Refresh:Config", refreshAll: true)
+                                       .SetCacheExpiration(new TimeSpan(0,0,10)); //10 seconds expiration
+                            })
+                            .UseFeatureFlags());
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "Failed to connect to Azure App Configuration.");
+    throw;
+}
 
 // UNAI log App Insights instrumentation Key
 //var ai_key = builder.Configuration.GetValue<string>("ApplicationInsights:ConnectionString");
 builder.Services.AddSingleton<ITelemetryInitializer, DotnetDemoapp.Telemetry.MyTelemetryInitializer>();
 builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["ApplicationInsights:ConnectionString"]);
-
 
 // Make Azure AD auth an optional feature if the config is present
 if (builder.Configuration.GetSection("AzureAd").Exists() && builder.Configuration.GetSection("AzureAd").GetValue<String>("ClientId") != "")
