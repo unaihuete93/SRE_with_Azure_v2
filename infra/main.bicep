@@ -5,6 +5,7 @@ param containerImage string
 param cpuCores int = 1
 param memorySize string = '1.0Gi'
 param appInsightsName string = 'srewithazurev2-app-insights'
+param keyVaultName string = 'srewithazurev2-keyvault'
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -26,6 +27,14 @@ module appInsightsModule 'modules/app-insights.bicep' = {
   params: {
     location: location
     appInsightsName: appInsightsName
+  }
+}
+
+module keyVaultModule 'modules/key-vault.bicep' = {
+  name: 'keyVaultDeployment'
+  params: {
+    keyVaultName: keyVaultName
+    location: location
   }
 }
 

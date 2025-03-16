@@ -64,3 +64,25 @@ resource acrRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' 
     principalId: containerApp.identity.principalId
   }
 }
+
+resource appConfigReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(containerApp.id, 'appconfig-reader')
+  scope: resourceGroup()
+  properties: {
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b12aa53e-6015-4669-9d5e-3d5e5662c884') // App Configuration Data Reader role
+    principalId: containerApp.identity.principalId
+  }
+}
+
+resource keyVaultReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(containerApp.id, 'keyvault-reader')
+  scope: resourceGroup()
+  properties: {
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b86a8fe4-44ce-4948-aee5-eccb2c155cd7') // Key Vault Reader role
+    principalId: containerApp.identity.principalId
+  }
+}
+
+
+
+
