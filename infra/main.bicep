@@ -54,7 +54,7 @@ module userMi 'modules/user-mi.bicep' = {
 
 
 
-module containerAppModule 'modules/container-app.bicep' = if (!useNewContainerAppModule) {
+module containerAppModule 'modules/container-app.bicep' = if (useNewContainerAppModule) {
   name: 'containerAppDeployment'
   params: {
     location: location
@@ -72,7 +72,7 @@ module containerAppModule 'modules/container-app.bicep' = if (!useNewContainerAp
   }
 }
 
-module containerAppNewModule 'modules/container-app-new.bicep' = if (useNewContainerAppModule) {
+module containerAppNewModule 'modules/container-app-new.bicep' = if (!useNewContainerAppModule) {
   name: 'containerAppNewDeployment'
   params: {
     location: location
