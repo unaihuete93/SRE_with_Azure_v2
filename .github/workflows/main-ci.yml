@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/workflows/main-cd-aca.yml'
+      - 'infra/**/*.bicep'
+      - '!infra/modules/acr.bicep'
   pull_request:
     branches:
       - main
