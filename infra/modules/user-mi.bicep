@@ -41,3 +41,4 @@ resource keyVaultReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@2
 }
 
 output resourceId string = userAssignedIdentity.id
+output clientId string = userAssignedIdentity.properties.clientId

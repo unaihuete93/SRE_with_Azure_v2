@@ -30,10 +30,10 @@ if (string.IsNullOrEmpty(endpoint))
 try
 {
     builder.Configuration.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(endpoint), new ManagedIdentityCredential())
+                        options.Connect(new Uri(endpoint), new ManagedIdentityCredential(Environment.GetEnvironmentVariable("AZURE_CLIENT_ID")))
                             .ConfigureKeyVault(kv =>
                             {
-                                kv.SetCredential(new ManagedIdentityCredential());
+                                kv.SetCredential(new ManagedIdentityCredential(Environment.GetEnvironmentVariable("AZURE_CLIENT_ID")));
                             })
                             .ConfigureRefresh(refresh =>
                             {

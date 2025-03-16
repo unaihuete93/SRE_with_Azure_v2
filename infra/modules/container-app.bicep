@@ -9,6 +9,7 @@ param appConfigEndpoint string
 param logAnalyticsWorkspaceGuid string
 param userMiId string
 param acrName string
+param usermiClientId string
 
 resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environmentName
@@ -60,6 +61,10 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
             {
               name: 'APP_CONFIG_END'
               value: appConfigEndpoint
+            }
+            {
+              name: 'AZURE_CLIENT_ID'
+              value: usermiClientId
             }
           ]
         }

@@ -62,5 +62,6 @@ module containerAppModule 'modules/container-app.bicep' = {
     appConfigEndpoint: appConfigModule.outputs.appConfigEndpoint
     userMiId: userMi.outputs.resourceId
     acrName: acrName
+    usermiClientId: userMi.outputs.clientId
   }
 }
