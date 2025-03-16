@@ -16,7 +16,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
       destination: 'log-analytics'
       logAnalyticsConfiguration: {
         customerId: logAnalyticsWorkspaceGuid
-        sharedKey: listKeys(logAnalyticsWorkspaceId, '2015-11-01').primarySharedKey
+        sharedKey: listKeys(logAnalyticsWorkspaceId, '2021-06-01').primarySharedKey
       }
     }
   }
