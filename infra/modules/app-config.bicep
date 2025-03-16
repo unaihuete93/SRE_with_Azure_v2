@@ -28,14 +28,6 @@ resource appConfigKeyValue2 'Microsoft.AppConfiguration/configurationStores/keyV
   }
 }
 
-resource appConfigKeyValue3 'Microsoft.AppConfiguration/configurationStores/keyValues@2021-03-01-preview' = {
-  parent: appConfig
-  name: 'AppConfig:Endpoint'
-  properties: {
-    value: appConfig.properties.endpoint
-    contentType: 'text/plain'
-  }
-}
 
 output appConfigId string = appConfig.id
 output appConfigEndpoint string = appConfig.properties.endpoint
