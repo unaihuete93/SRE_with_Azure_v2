@@ -25,7 +25,7 @@ resource appConfigReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@
     name: guid(userAssignedIdentity.id, 'appconfig-reader')
     scope: resourceGroup()
     properties: {
-        roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b12aa53e-6015-4669-9d5e-3d5e5662c884') // App Configuration Data Reader role
+        roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '516239f1-63e1-4d78-a4de-a74fb236a071') // App Configuration Data Reader role
         principalId: userAssignedIdentity.properties.principalId
         principalType: 'ServicePrincipal'
     }
@@ -35,9 +35,8 @@ resource keyVaultReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@2
     name: guid(userAssignedIdentity.id, 'keyvault-reader')
     scope: resourceGroup()
     properties: {
-        roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b86a8fe4-44ce-4948-aee5-eccb2c155cd7') // Key Vault Reader role
+        roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6') // Key Vault Secrets Users role
         principalId: userAssignedIdentity.properties.principalId
-        principalType: 'ServicePrincipal'
     }
 }
 
