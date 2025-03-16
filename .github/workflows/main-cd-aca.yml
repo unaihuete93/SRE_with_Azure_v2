@@ -51,4 +51,4 @@ jobs:
         az deployment group create \
           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
           --template-file infra/modules/container-app-new.bicep \
-          --parameters weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }}
+          --parameters acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }}
