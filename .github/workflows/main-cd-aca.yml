@@ -1,0 +1,35 @@
+name: CD ACA
+
+on:
+  workflow_dispatch:
+    inputs:  
+        IMAGE_TAG:
+          description: "Image tag to be deployed"
+          required: true
+
+
+jobs:
+  deploy-container-apps:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Using https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-openid-connect
+    - name: Set up Azure CLI
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Create resource group if it does not exist
+      run: |
+        az group create --name ${{ secrets.AZURE_RESOURCE_GROUP }} --location eastus
+
+    - name: Create Azure Container App solution
+      run: |
+        az deployment group create \
+          --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+          --template-file infra/main.bicep \
+          --parameters acrName=${{ secrets.ACR_NAME }}

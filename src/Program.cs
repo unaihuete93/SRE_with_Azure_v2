@@ -13,17 +13,7 @@ using Microsoft.FeatureManagement.FeatureFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//UNAI App Configuration
-// var connection = builder.Configuration.GetConnectionString("AppConfig");
-// builder.Configuration.AddAzureAppConfiguration(options =>
-//                     options.Connect(connection)
-//                         .ConfigureKeyVault(kv =>
-//                         {
-//                             kv.SetCredential(new DefaultAzureCredential());
-//                         })
-//                         .UseFeatureFlags());
-
-var endpoint = Environment.GetEnvironmentVariable("APP_CONFIG_END");
+var endpoint = Environment.GetEnvironmentVariable("Endpoints__AppConfiguration");
 builder.Configuration.AddAzureAppConfiguration(options =>
                     options.Connect(new Uri(endpoint), new ManagedIdentityCredential())
                         .ConfigureKeyVault(kv =>

@@ -13,9 +13,8 @@ permissions:
   contents: read
 
 jobs:
-  build-and-deploy:
+  build-and-push-container:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -44,3 +43,9 @@ jobs:
         az acr login --name ${{ secrets.ACR_NAME }}
         docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.run_number }} -f src/Dockerfile src
         docker push ${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.run_number }}
+
+    - name: "Trigger ACA release pipeline"
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: "CD ACA"
+        inputs: '{ "IMAGE_TAG": "${{ github.run_number }}" }'
