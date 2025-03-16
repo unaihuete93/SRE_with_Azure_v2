@@ -3,7 +3,7 @@ param environmentName string = 'srewithazurev2-aca-env'
 param containerAppName string = 'srewithazurev2-aca-app'
 param containerImage string 
 param cpuCores int = 1
-param memorySize string = '1.0Gi'
+param memorySize string = '2.0Gi'
 param appInsightsName string = 'srewithazurev2-app-insights'
 param keyVaultName string = 'srewithazurev2-keyvault'
 
