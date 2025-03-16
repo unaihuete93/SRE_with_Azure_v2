@@ -9,39 +9,8 @@
     <h3>Basic Details</h3>
 
     <table class="table table-hover table-striped table">
-      <tr>
-        <td><i class="fa fa-fw fa-cube"></i> Containerized:</td>
-        @if (Model.isInContainer)
-        {
-          <td>Looks like we're running in a Docker container! &#x1F604;</td>
-        }
-        else
-        {
-          <td>Not running as a Docker container &#x1F622;</td>
-        }
-      </tr>
-      <tr>
-        <td><i class="fa fa-fw fa-project-diagram"></i> Kubernetes:</td>
-        @if (Model.isInKubernetes)
-        {
-          <td>We're also running in a Kubernetes pod! &#x1f44d;</td>
-        }
-        else
-        {
-          <td>Not running in Kubernetes &#x1F622;</td>
-        }
-      </tr>
-      <tr>
-        <td><i class="fa fa-fw fa-microscope"></i> App Insights:</td>
-        @if (Model.isAppInsightsEnabled)
-        {
-          <td>Reporting telemetry to Azure Application Insights</td>
-        }
-        else
-        {
-          <td>Not enabled</td>
-        }
-      </tr>
+      
+     
       <tr>
         <td><i class="fa fa-fw fa-home"></i> Hostname:</td>
         <td>@Model.hostname</td>
