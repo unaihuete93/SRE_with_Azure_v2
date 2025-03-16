@@ -10,6 +10,7 @@ param userMiName string = 'myUserAssignedIdentity'
 param acrName string = 'myAcrRegistry'
 @secure()
 param weatherApiKey string
+param useNewContainerAppModule bool = false
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -51,8 +52,28 @@ module userMi 'modules/user-mi.bicep' = {
   }
 }
 
-module containerAppModule 'modules/container-app.bicep' = {
+
+
+module containerAppModule 'modules/container-app.bicep' = if (!useNewContainerAppModule) {
   name: 'containerAppDeployment'
+  params: {
+    location: location
+    environmentName: environmentName
+    containerAppName: containerAppName
+    containerImage: containerImage
+    cpuCores: cpuCores
+    memorySize: memorySize
+    logAnalyticsWorkspaceId: logAnalyticsModule.outputs.workspaceId
+    logAnalyticsWorkspaceGuid: logAnalyticsModule.outputs.workspaceGuid
+    appConfigEndpoint: appConfigModule.outputs.appConfigEndpoint
+    userMiId: userMi.outputs.resourceId
+    acrName: acrName
+    usermiClientId: userMi.outputs.clientId
+  }
+}
+
+module containerAppNewModule 'modules/container-app-new.bicep' = if (useNewContainerAppModule) {
+  name: 'containerAppNewDeployment'
   params: {
     location: location
     environmentName: environmentName

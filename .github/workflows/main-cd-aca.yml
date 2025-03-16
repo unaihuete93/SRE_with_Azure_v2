@@ -38,17 +38,10 @@ jobs:
 
     
     - name: Create Azure Container App solution
-      if: ${{ github.event.inputs.FIRST_DEPLOY == 'true' }}
       run: |
         az deployment group create \
           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
           --template-file infra/main.bicep \
-          --parameters weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }}
+          --parameters useNewContainerAppModule=${{ github.event.inputs.FIRST_DEPLOY }}  weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }}
 
-    - name: Update Azure Container App
-      if: ${{ github.event.inputs.FIRST_DEPLOY == 'false' }}
-      run: |
-        az deployment group create \
-          --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-          --template-file infra/modules/container-app-new.bicep \
-          --parameters acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }}
+    
