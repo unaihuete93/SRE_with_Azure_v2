@@ -16,7 +16,9 @@ resource acrRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' 
     properties: {
         roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d') // AcrPull role
         principalId: userAssignedIdentity.properties.principalId
+        principalType: 'ServicePrincipal'
     }
+    
 }
 
 resource appConfigReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
@@ -25,6 +27,7 @@ resource appConfigReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@
     properties: {
         roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b12aa53e-6015-4669-9d5e-3d5e5662c884') // App Configuration Data Reader role
         principalId: userAssignedIdentity.properties.principalId
+        principalType: 'ServicePrincipal'
     }
 }
 
@@ -34,6 +37,7 @@ resource keyVaultReaderRoleAssignment 'Microsoft.Authorization/roleAssignments@2
     properties: {
         roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b86a8fe4-44ce-4948-aee5-eccb2c155cd7') // Key Vault Reader role
         principalId: userAssignedIdentity.properties.principalId
+        principalType: 'ServicePrincipal'
     }
 }
 
