@@ -1,10 +1,10 @@
 param location string = resourceGroup().location
-param environmentName string = 'srewithazure-aca-env'
-param containerAppName string = 'srewithazure-aca-app'
+param environmentName string = 'srewithazurev2-aca-env'
+param containerAppName string = 'srewithazurev2-aca-app'
 param containerImage string 
 param cpuCores int = 1
 param memorySize string = '1.0Gi'
-param appInsightsName string = 'srewithazure-app-insights'
+param appInsightsName string = 'srewithazurev2-app-insights'
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -17,7 +17,7 @@ module appConfigModule 'modules/app-config.bicep' = {
   name: 'appConfigDeployment'
   params: {
     location: location
-    appInsightsConnectionString: appInsightsModule.outputs.appInsightsInstrumentationKey
+    appInsightsConnectionString: appInsightsModule.outputs.appInsightsConnString
   }
 }
 

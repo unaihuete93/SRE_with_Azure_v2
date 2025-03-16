@@ -1,5 +1,6 @@
 param location string
-param appConfigName string = 'srewithazure-appconfig'
+param appConfigName string = 'srewithazurev2-appconfig'
+param appInsightsConnectionString string
 
 resource appConfig 'Microsoft.AppConfiguration/configurationStores@2021-03-01-preview' = {
   name: appConfigName
@@ -9,5 +10,15 @@ resource appConfig 'Microsoft.AppConfiguration/configurationStores@2021-03-01-pr
   }
 }
 
+resource appConfigKeyValue 'Microsoft.AppConfiguration/configurationStores/keyValues@2021-03-01-preview' = {
+  parent: appConfig
+  name: 'ApplicationInsights:ConnectionString'
+  properties: {
+    value: appInsightsConnectionString
+    contentType: 'text/plain'
+  }
+}
+
 output appConfigId string = appConfig.id
 output appConfigEndpoint string = appConfig.properties.endpoint
+
