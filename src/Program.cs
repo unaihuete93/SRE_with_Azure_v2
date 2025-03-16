@@ -13,7 +13,7 @@ using Microsoft.FeatureManagement.FeatureFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var endpoint = Environment.GetEnvironmentVariable("Endpoints__AppConfiguration");
+var endpoint = Environment.GetEnvironmentVariable("APP_CONFIG_END");
 builder.Configuration.AddAzureAppConfiguration(options =>
                     options.Connect(new Uri(endpoint), new ManagedIdentityCredential())
                         .ConfigureKeyVault(kv =>

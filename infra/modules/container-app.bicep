@@ -22,7 +22,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
   }
 }
 
-resource containerApp 'Microsoft.App/containerApps@2024-10-02-preview' = {
+resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
   name: containerAppName
   location: location
   identity: {
@@ -45,7 +45,7 @@ resource containerApp 'Microsoft.App/containerApps@2024-10-02-preview' = {
             cpu: cpuCores
             memory: memorySize
           }
-env: [
+          env: [
             {
               name: 'APP_CONFIG_END'
               value: appConfigEndpoint
