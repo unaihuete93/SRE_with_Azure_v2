@@ -6,6 +6,7 @@ param cpuCores int
 param memorySize string
 param logAnalyticsWorkspaceId string
 param appConfigEndpoint string
+param logAnalyticsWorkspaceGuid string
 
 resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environmentName
@@ -14,7 +15,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
     appLogsConfiguration: {
       destination: 'log-analytics'
       logAnalyticsConfiguration: {
-        customerId: logAnalyticsWorkspaceId
+        customerId: logAnalyticsWorkspaceGuid
         sharedKey: listKeys(logAnalyticsWorkspaceId, '2015-11-01').primarySharedKey
       }
     }

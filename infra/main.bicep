@@ -48,6 +48,7 @@ module containerAppModule 'modules/container-app.bicep' = {
     cpuCores: cpuCores
     memorySize: memorySize
     logAnalyticsWorkspaceId: logAnalyticsModule.outputs.workspaceId
+    logAnalyticsWorkspaceGuid: logAnalyticsModule.outputs.workspaceGuid
     appConfigEndpoint: appConfigModule.outputs.appConfigEndpoint
   }
 }
