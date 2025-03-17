@@ -45,6 +45,10 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
             latestRevision: true
             weight: 0
           }
+          {
+            latestRevision: false
+            weight: 100
+          }
         ]
       }
       registries: [
