@@ -59,6 +59,8 @@ jobs:
   swap-container-apps:
     needs: deploy-container-apps
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     environment:
       name: prod
     steps:
