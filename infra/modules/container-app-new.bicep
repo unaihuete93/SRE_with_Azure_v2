@@ -10,6 +10,7 @@ param logAnalyticsWorkspaceGuid string
 param userMiId string
 param acrName string
 param usermiClientId string
+param revisionName string = ''
 
 resource containerEnv 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environmentName
@@ -48,6 +49,7 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
           {
             latestRevision: false
             weight: 100
+            revisionName: revisionName
           }
         ]
       }

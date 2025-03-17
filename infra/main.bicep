@@ -11,6 +11,7 @@ param acrName string = 'myAcrRegistry'
 @secure()
 param weatherApiKey string
 param useNewContainerAppModule bool = false
+param revisionName string = ''
 
 module logAnalyticsModule 'modules/log-analytics.bicep' = {
   name: 'logAnalyticsDeployment'
@@ -87,5 +88,6 @@ module containerAppNewModule 'modules/container-app-new.bicep' = if (!useNewCont
     userMiId: userMi.outputs.resourceId
     acrName: acrName
     usermiClientId: userMi.outputs.clientId
+    revisionName: revisionName
   }
 }

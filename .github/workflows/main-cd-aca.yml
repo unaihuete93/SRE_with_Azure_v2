@@ -10,7 +10,8 @@ on:
           description: "Is this the first deployment?"
           required: true
           default: "false"
-
+env:
+  CONTAINER-APP-NAME: "srewithazurev2-aca-app"
 jobs:
   deploy-container-apps:
     runs-on: ubuntu-latest
@@ -36,12 +37,22 @@ jobs:
       run: |
         az group create --name ${{ secrets.AZURE_RESOURCE_GROUP }} --location eastus
 
-    
+    - name: Get latest revision name if not first deploy
+      if: ${{ github.event.inputs.FIRST_DEPLOY == 'false' }}
+      id: get-revision
+      run: |
+      az containerapp revision list \
+        --name ${{ env.CONTAINER-APP-NAME}} \
+        --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+        --query "[?properties.active].name | [0]" \
+        --output tsv
+      echo "revision_name=${{ steps.get-revision.outputs.revision_name }}" >> $GITHUB_ENV
+      echo "revision_name=${{ steps.get-revision.outputs.revision_name }}"
+
     - name: Create Azure Container App solution
       run: |
         az deployment group create \
           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
           --template-file infra/main.bicep \
-          --parameters useNewContainerAppModule=${{ github.event.inputs.FIRST_DEPLOY }}  weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }}
+          --parameters  containerAppName=${{ env.CONTAINER-APP-NAME}}  useNewContainerAppModule=${{ github.event.inputs.FIRST_DEPLOY }}  weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }} revisionName=${{ steps.get-revision.outputs.revision_name }}
 
-    
