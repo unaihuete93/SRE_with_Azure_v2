@@ -47,7 +47,7 @@ jobs:
           --query "[?properties.active].name | [0]" \
           --output tsv)
         echo "revision_name=$revision_name" >> $GITHUB_ENV
-        echo "revision_name=$revision_name"
+        echo "::set-output name=revision_name::$revision_name"
 
     - name: Create Azure Container App solution
       run: |
