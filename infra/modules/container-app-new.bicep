@@ -53,6 +53,7 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
           }
         ]
       }
+      activeRevisionsMode: 'multiple'
       registries: [
         {
           server: '${acrName}.azurecr.io'
