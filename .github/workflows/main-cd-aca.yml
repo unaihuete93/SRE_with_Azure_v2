@@ -61,6 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      repo: read
     environment:
       name: prod
     steps:
