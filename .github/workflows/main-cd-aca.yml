@@ -41,13 +41,13 @@ jobs:
       if: ${{ github.event.inputs.FIRST_DEPLOY == 'false' }}
       id: get-revision
       run: |
-        az containerapp revision list \
-        --name ${{ env.CONTAINER-APP-NAME}} \
-        --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-        --query "[?properties.active].name | [0]" \
-        --output tsv
-        echo "revision_name=${{ steps.get-revision.outputs.revision_name }}" >> $GITHUB_ENV
-        echo "revision_name=${{ steps.get-revision.outputs.revision_name }}"
+        revision_name=$(az containerapp revision list \
+          --name ${{ env.CONTAINER-APP-NAME}} \
+          --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+          --query "[?properties.active].name | [0]" \
+          --output tsv)
+        echo "revision_name=$revision_name" >> $GITHUB_ENV
+        echo "revision_name=$revision_name"
 
     - name: Create Azure Container App solution
       run: |
