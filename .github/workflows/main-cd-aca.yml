@@ -54,5 +54,22 @@ jobs:
         az deployment group create \
           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
           --template-file infra/main.bicep \
-          --parameters  containerAppName=${{ env.CONTAINER-APP-NAME}}  useNewContainerAppModule=${{ github.event.inputs.FIRST_DEPLOY }}  weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }} revisionName=${{ steps.get-revision.outputs.revision_name }}
+          --parameters    useNewContainerAppModule=${{ github.event.inputs.FIRST_DEPLOY }}  weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }} revisionName=${{ steps.get-revision.outputs.revision_name }}
 
+  swap-container-apps:
+    needs: deploy-container-apps
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+    steps:
+    # Using https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-openid-connect
+    - name: Set up Azure CLI
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        allow-no-subscriptions: true
+    - name: swap traffic between revisions
+      run: |
+        az containerapp ingress traffic set --name containerAppName=${{ env.CONTAINER-APP-NAME}} -g ${{ secrets.AZURE_RESOURCE_GROUP }} --traffic-weight latest=100
