@@ -47,14 +47,14 @@ jobs:
           --query "[?properties.active].name | [0]" \
           --output tsv)
         echo "revision_name=$revision_name" >> $GITHUB_ENV
-        echo "::set-output name=revision_name::$revision_name"
+        echo "revision_name=$revision_name" >> $GITHUB_OUTPUT
 
     - name: Create Azure Container App solution
       run: |
         az deployment group create \
           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
           --template-file infra/main.bicep \
-          --parameters    useNewContainerAppModule=${{ github.event.inputs.FIRST_DEPLOY }}  weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }} revisionName=${{ steps.get-revision.outputs.revision_name }}
+          --parameters  containerAppName=${{ env.CONTAINER-APP-NAME}}  useNewContainerAppModule=${{ github.event.inputs.FIRST_DEPLOY }}  weatherApiKey=${{ secrets.WEATHER_API_KEY }} acrName=${{ secrets.ACR_NAME }} containerImage=${{ secrets.ACR_NAME }}.azurecr.io/net8-app:${{ github.event.inputs.IMAGE_TAG }} revisionName=${{ steps.get-revision.outputs.revision_name }}
 
   swap-container-apps:
     needs: deploy-container-apps
