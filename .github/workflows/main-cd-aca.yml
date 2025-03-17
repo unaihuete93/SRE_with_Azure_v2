@@ -74,5 +74,5 @@ jobs:
         allow-no-subscriptions: true
     - name: swap traffic between revisions and deactivate old revision
       run: |
-        az containerapp ingress traffic set --name containerAppName=${{ env.CONTAINER-APP-NAME}} -g ${{ secrets.AZURE_RESOURCE_GROUP }} --traffic-weight latest=100
+        az containerapp ingress traffic set --name ${{ env.CONTAINER-APP-NAME}} -g ${{ secrets.AZURE_RESOURCE_GROUP }} --revision-weight latest=100
         az containerapp deactivate --name ${{ env.CONTAINER-APP-NAME}} -g ${{ secrets.AZURE_RESOURCE_GROUP }} --revision ${{ steps.get-revision.outputs.revision_name }}
