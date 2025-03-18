@@ -44,6 +44,7 @@
 - https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts#uploading-build-and-test-artifacts
 - https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots?msclkid=585ad452d07811ec988c98ced902b383
 - https://docs.microsoft.com/en-us/azure/azure-app-configuration/overview
+- https://docs.microsoft.com/en-us/azure/azure-app-configuration/howto-targetingfilter-aspnet-core
 - https://martinfowler.com/articles/feature-toggles.html
 - https://learn.microsoft.com/en-us/azure/container-apps/overview
 - https://github.com/unaihuete93/SRE_with_Azure_v2
