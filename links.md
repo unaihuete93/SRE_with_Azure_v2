@@ -46,4 +46,5 @@
 - https://docs.microsoft.com/en-us/azure/azure-app-configuration/overview
 - https://martinfowler.com/articles/feature-toggles.html
 - https://learn.microsoft.com/en-us/azure/container-apps/overview
+- https://github.com/unaihuete93/SRE_with_Azure_v2
 - 
