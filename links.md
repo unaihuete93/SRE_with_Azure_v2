@@ -88,6 +88,12 @@
 - https://docs.microsoft.com/en-us/azure/devops/report/powerbi/data-available-in-analytics?view=azure-devops
 - https://www.githubstatus.com 
 
-
-
+# Chapter 7
+- https://sre.google/sre-book/introduction/
+- https://docs.microsoft.com/en-us/azure/cosmos-db/request-units
+- https://azure.status.microsoft/en-gb/status/history/
+- https://www.martinfowler.com/articles/feature-toggles.html
+- https://en.wikipedia.org/wiki/OKR
+- https://docs.microsoft.com/en-us/microsoftteams/expand-teams-across-your-org/shifts-for-teams-landing-page
+- https://www.ted.com/talks/margaret_heffernan_forget_the_pecking_order_at_work?language=en
 
