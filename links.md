@@ -49,4 +49,45 @@
 - https://learn.microsoft.com/en-us/azure/container-apps/overview
 - https://github.com/unaihuete93/SRE_with_Azure_v2
 - https://openweathermap.org/appid
-- 
+
+# Chapter 6
+- https://www.youtube.com/watch?v=t1BGo-Il1AM 
+- https://docs.microsoft.com/en-us/azure/service-health/overview 
+- https://status.azure.com/ 
+- https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema
+- https://docs.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview
+- https://docs.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-automate
+- https://grafana.com/products/cloud
+- https://grafana.com/docs/grafana/latest/datasources/azure-monitor/
+- https://docs.microsoft.com/en-us/azure/managed-grafana/ 
+- https://docs.microsoft.com/en-us/azure/azure-monitor/logs/workspace-design
+- https://docs.microsoft.com/en-us/azure/azure-monitor/logs/cross-workspace-query
+- https://docs.microsoft.com/en-us/azure/azure-monitor/logs/query-packs
+- https://docs.microsoft.com/en-us/azure/data-explorer/data-explorer-overview
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/sqlcheatsheet
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/splunk-cheat-sheet
+- https://docs.microsoft.com/en-us/azure/sentinel/kusto-resources
+- https://github.com/rod-trent/MustLearnKQL
+- https://docs.microsoft.com/en-us/azure/governance/resource-graph/overview
+- https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph/portal-dashboards
+- https://learn.microsoft.com/en-us/azure/azure-monitor/app/codeless-overview
+- https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-help-support-feedback?tabs=aspnetcore#whats-the-current-release-state-of-features-within-the-azure-monitor-opentelemetry-distro 
+- https://opentelemetry.io/
+- https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-overview
+- https://docs.microsoft.com/en-us/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings#new-capabilities
+- https://docs.microsoft.com/en-us/azure/azure-monitor/app/azure-ad-authentication?tabs=net 
+- https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-map?tabs=net#application-map-intelligent-view-public-preview 
+- https://docs.microsoft.com/en-us/azure/azure-monitor/app/availability-azure-functions
+- https://learn.microsoft.com/en-us/azure/azure-monitor/insights/code-optimizations-profiler-overview#supported-in-profiler
+- https://docs.microsoft.com/en-us/azure/azure-monitor/app/snapshot-debugger#enable-application-insights-snapshot-debugger-for-your-application 
+- https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics#api-summary
+- https://docs.microsoft.com/en-us/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications
+- https://github.com/unaihuete93/SRE_with_Azure_v2
+- https://status.dev.azure.com/
+- https://docs.microsoft.com/en-us/azure/devops/report/dashboards/widget-catalog?view=azure-devops 
+- https://docs.microsoft.com/en-us/azure/devops/report/powerbi/data-available-in-analytics?view=azure-devops
+- https://www.githubstatus.com 
+
+
+
+
