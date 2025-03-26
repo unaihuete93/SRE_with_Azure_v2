@@ -97,3 +97,15 @@
 - https://docs.microsoft.com/en-us/microsoftteams/expand-teams-across-your-org/shifts-for-teams-landing-page
 - https://www.ted.com/talks/margaret_heffernan_forget_the_pecking_order_at_work?language=en
 
+# Chapter 8
+- https://principlesofchaos.org/
+- https://github.com/netflix/chaosmonkey
+- https://spinnaker.io
+- https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli
+- https://microsoftlearning.github.io/trainer-demo-deploy/?tags=aks
+- https://charts.chaos-mesh.org
+- https://learn.microsoft.com/en-us/azure/chaos-studio/chaos-studio-tutorial-aks-portal
+- https://keda.sh/
+- https://jmeter.apache.org/
+- https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/
+
