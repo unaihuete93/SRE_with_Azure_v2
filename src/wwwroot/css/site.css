@@ -1,4 +1,4 @@
-﻿.navbar-brand img {
+.navbar-brand img {
   height: 3rem;
 }
 
@@ -15,6 +15,32 @@
   border-radius: 1rem;
   margin: auto;
   align-self: center;
+}
+
+/* Left sidebar styles */
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sidebar .navbar-brand {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  padding-left: 0;
+}
+
+.sidebar .nav-item {
+  margin-bottom: 10px;
+}
+
+.main-content {
+  flex: 1;
 }
 
 .env-table {
