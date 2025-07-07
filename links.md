@@ -109,3 +109,21 @@
 - https://jmeter.apache.org/
 - https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/
 
+# Chapter 9
+
+
+- [https://learn.microsoft.com/en-us/copilot/microsoft-365/](https://learn.microsoft.com/en-us/copilot/microsoft-365/)
+- [https://learn.microsoft.com/en-us/azure/copilot/overview](https://learn.microsoft.com/en-us/azure/copilot/overview)
+- [https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot)
+- [https://docs.github.com/en/copilot/how-tos/agents/copilot-coding-agent](https://docs.github.com/en/copilot/how-tos/agents/copilot-coding-agent)
+- [https://docs.github.com/en/copilot/how-tos/agents/copilot-code-review/using-copilot-code-review](https://docs.github.com/en/copilot/how-tos/agents/copilot-code-review/using-copilot-code-review)
+- [https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/responsible-use-autofix-code-scanning](https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/responsible-use-autofix-code-scanning)
+- [https://code.visualstudio.com/docs/copilot/copilot-chat](https://code.visualstudio.com/docs/copilot/copilot-chat)
+- [https://learn.microsoft.com/en-us/azure/ai-services/agents/overview](https://learn.microsoft.com/en-us/azure/ai-services/agents/overview)
+- [https://ai.azure.com/](https://ai.azure.com/)
+- [https://learn.microsoft.com/en-us/azure/bot-service/abs-quickstart](https://learn.microsoft.com/en-us/azure/bot-service/abs-quickstart)?
+- [https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview)
+- [https://learn.microsoft.com/en-us/semantic-kernel/overview/](https://learn.microsoft.com/en-us/semantic-kernel/overview/)
+- [https://learn.microsoft.com/en-us/azure/sre-agent/overview](https://learn.microsoft.com/en-us/azure/sre-agent/overview)
+- [https://github.com/unaihuete93/SRE_with_Azure_v2](https://github.com/unaihuete93/SRE_with_Azure_v2)
+- [https://www.youtube.com/watch?v=Xwx1DJ0OqCk](https://www.youtube.com/watch?v=Xwx1DJ0OqCk)
