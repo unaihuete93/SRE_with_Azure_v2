@@ -1,3 +1,4 @@
+TEST
 # Notes from Unai - SRE Book
 The following repo is used as a demo in the book **The Art of Site Reliability Engineering (SRE) with Azure**
 
